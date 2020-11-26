@@ -13,7 +13,7 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
         resp.setContentType("text/html"); //setting type of response
-        resp.getWriter().write("Hello, World!"); //writing hello world to response
+        //resp.getWriter().write("Hello, World!"); //writing hello world to response
         resp.getWriter().write("<title>This is the Title of my Servlets</title>");
         System.out.print(req.getServletPath());
 
