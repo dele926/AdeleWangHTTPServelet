@@ -33,7 +33,7 @@ public class MyServlet extends HttpServlet {
                 "\n" +
                 "<a href=\"http://google.com\">This Link</a>\n" +
                 "\n" +
-                "is a link to another nifty site\n" +
+                "MY LINK\n" +
                 "\n" +
                 "<H1>Welcome to  my Servlet!</H1>\n" +
                 "\n" +
