@@ -73,14 +73,14 @@ public class MyServlet extends HttpServlet {
     }
     public void makeQuery(){
         //establishing connection
-        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
         } catch (Exception e) {
         }
         try {
-            Connection conn= DriverManager.getConnection(dbUrl, "postgres", "690922@Yd");
+            Connection conn= DriverManager.getConnection(dbUrl);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class MyServlet extends HttpServlet {
             //creating a string in SQL language
             String sqlStr = "INSERT INTO patientofdoctor (patientid,doctorid) values (1,2);";
             s.execute(sqlStr);
-            sqlStr = "INSERT INTO patientofdoctor (patientid,doctorid) values (2,2);”;
+            sqlStr = "INSERT INTO patientofdoctor (patientid,doctorid) values (2,2);";
             s.execute(sqlStr);
             s.close();
             conn.close();
@@ -102,7 +102,7 @@ public class MyServlet extends HttpServlet {
         try {
             Connection conn = null;
             Statement s=conn.createStatement();
-            String sqlStr = "SELECT * FROM patients WHERE id>1;”;
+            String sqlStr = "SELECT * FROM patients WHERE id>1";;
             ResultSet rset=s.executeQuery(sqlStr);
             while(rset.next()){
                 System.out.println(rset.getInt("id")+" "+ rset.getString("familyname"));
