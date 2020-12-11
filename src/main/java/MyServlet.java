@@ -77,12 +77,5 @@ public class MyServlet extends HttpServlet {
          */
 
     }
-    /*public class MyClass {
 
-        SQLQuery query = new SQLQuery();
-        public void execute() {
-            query.makeQuery();
-        }
-    }
-     */
 }
