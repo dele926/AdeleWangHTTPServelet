@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +18,8 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
         resp.setContentType("text/html"); //setting type of response
-        //resp.getWriter().write("Hello, World!"); //writing hello world to response
-        //resp.getWriter().write("<title>This is the Title of my Servlets</title>");
+        resp.getWriter().write("Hello, World!"); //writing hello world to response
+        resp.getWriter().write("<title>Adele's Servlet</title>");
         PrintWriter out = resp.getWriter();
         out.println("<HTML>\n" +
                 "\n" +
@@ -64,14 +66,18 @@ public class MyServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
         String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        resp.setContentType("text/html");
-        resp.getWriter().write("Thank you client! "+reqBody);
+        Gson gson = new Gson();
+        Patient p = gson.fromJson(reqBody,Patient.class);
         //creating a JSON response
         resp.setContentType("application/json");
-        //how do i pull in the patient value from client?
-        //String reqBody2 = req.getReader().lines().collect(Collectors.joining());
+        resp.getWriter().write("Patient Received!" + reqBody);
+        /*
+        resp.setContentType("text/html");
+        resp.getWriter().write("Thank you client! "+reqBody);
+         */
+
     }
-    public class MyClass {
+    /*public class MyClass {
 
         SQLQuery query = new SQLQuery();
 
@@ -79,4 +85,5 @@ public class MyServlet extends HttpServlet {
             query.makeQuery();
         }
     }
+     */
 }
